@@ -1,6 +1,8 @@
 # 🔬 Semiconductor Device I-V Analyzer & AI Parameter Extractor
 
-반도체 소자(MOSFET)의 측정 데이터로부터 핵심 전기적 파라미터를 자동으로 추출하고, **Gemini AI 소자 엔지니어**를 통해 실시간 소자 특성 및 공정 개선점을 진단하는 Python 기반 지능형 분석 도구입니다.
+반도체 소자(MOSFET)의 측정 데이터로부터 핵심 전기적 파라미터를 자동으로 추출하고, **Gemini AI 소자 엔지니어**를 통해 실시간 소자 특성 및 공정 개선점을 진단하는 Python 기반 지능형 웹 대시보드입니다.
+
+🔗 **Live Demo (웹 서비스 바로가기)**: [https://semiconductor-iv-analyzer-yh7tgnz7nrch2rfkzzuu3v.streamlit.app/](https://semiconductor-iv-analyzer-yh7tgnz7nrch2rfkzzuu3v.streamlit.app/)
 
 ---
 
@@ -13,19 +15,15 @@
 ## ⚡ 핵심 기능 및 기술 스택
 
 1. **자동 파라미터 추출 엔진:**
-   - **문턱전압 ($V_{th}$):** 정전류 기준법(Constant Current Method, $1\mu\text{A}$) 기반 자동 산출
-   - **On/Off 전류비 ($I_{on}/I_{off}$):** 최대 구동전류와 최소 누설전류 비율 계산
-   - **Subthreshold Swing ($SS$) 및 트랜스콘덕턴스 ($g_m$):** 미분 연산을 통한 스위칭 및 증폭 성능 지표 추출
+  - **문턱전압 ($V_{th}$):** 정전류 기준법(Constant Current Method, $1\mu\text{A}$) 기반 자동 산출
+  - **On/Off 전류비 ($I_{on}/I_{off}$):** 최대 구동전류와 최소 누설전류 비율 계산
+  - **Subthreshold Swing ($SS$) 및 트랜스콘덕턴스 ($g_m$):** 미분 연산을 통한 스위칭 및 증폭 성능 지표 추출
 2. **Gemini AI 지능형 소자 진단 (`gemini-3.8-flash`):**
-   - 추출된 파라미터 수치를 프롬프트에 동적으로 바인딩하여 AI 소자 엔지니어가 누설 전류 상태 및 옥사이드/도핑 공정 개선점을 3줄 이내로 진단
-3. **네트워크 안정성 확보 (Auto-Retry):**
-   - 팹/서버 트래픽 과부하(`503 Service Unavailable`) 또는 타임아웃 발생 시 최대 3회까지 자동 재시도하는 견고한(Robust) 예외 처리 로직 구현
-   
-   ## ⚡ 주요 기능 (Features)
-- **MOSFET I-V Characterization & Visualization**: 
-  - 사용자가 웹 브라우저에서 직접 I-V 측정 CSV 파일을 업로드할 수 있습니다.
-  - 업로드된 데이터를 기반으로 실시간 $I_d - V_{gs}$ 커브 및 로그 스케일 그래프를 시각화합니다.
-- **Streamlit 웹 대시보드 구현**: 터미널 실행을 넘어 직관적인 UI/UX 환경을 제공합니다.
+  - 추출된 파라미터 수치를 프롬프트에 동적으로 바인딩하여 AI 소자 엔지니어가 누설 전류 상태 및 옥사이드/도핑 공정 개선점을 실시간 진단
+3. **Streamlit Cloud 웹 대시보드:**
+  - 터미널 실행을 넘어 사용자가 브라우저에서 직접 I-V 측정 CSV 파일을 업로드하고, 실시간 $I_d - V_{gs}$ 커브 및 시각화 결과를 확인할 수 있는 직관적인 UI/UX 환경 제공
+4. **네트워크 안정성 확보 (Auto-Retry):**
+  - 팹/서버 트래픽 과부하 또는 타임아웃 발생 시 최대 3회까지 자동 재시도하는 견고한 예외 처리 로직 구현
 
 ---
 
@@ -61,4 +59,3 @@ MOSFET 파라미터 자동 추출 결과
 2) SS 값이 71.6 mV/dec로 이상적인 상온 한계(60)에 근접해 게이트 산화막의 품질이 양호합니다.
 3) 추가적인 성능 향상을 위해 고유전율(High-k) 옥사이드 두께 최적화 및 채널 도핑 농도 미세 조정을 권장합니다.
 ============================================================
-▶분석 그래프 저장 완료: mosfet_transfer_curve.png
