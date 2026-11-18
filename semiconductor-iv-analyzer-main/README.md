@@ -59,3 +59,21 @@ MOSFET 파라미터 자동 추출 결과
 2) SS 값이 71.6 mV/dec로 이상적인 상온 한계(60)에 근접해 게이트 산화막의 품질이 양호합니다.
 3) 추가적인 성능 향상을 위해 고유전율(High-k) 옥사이드 두께 최적화 및 채널 도핑 농도 미세 조정을 권장합니다.
 ============================================================
+---
+
+## 💡 5. 시스템 아키텍처 및 파이프라인 (System Architecture)
+```text
+[Raw I-V Measurement CSV Data] 
+       │
+       ▼
+[Data Parsing & Preprocessing] 
+       │
+       ▼
+[Parameter Extraction Engine ($V_{th}, I_{on}/I_{off}, SS, g_m$)] 
+       │
+       ▼
+[Log-Scale Visualization (Matplotlib / Seaborn)] 
+       │
+       ▼
+[Gemini AI Device Diagnostic Engine (Auto-Retry)] ──> Expert Process Feedback Report
+Developed by 전효재 (Jeon Hyojae) | Suncheon National University, Department of Electronic Engineering
